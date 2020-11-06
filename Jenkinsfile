@@ -19,6 +19,12 @@ pipeline {
                 sh 'docker build -t isky/simple-maven .'
             }
         }
+        stage('Start java application in docker container') {
+            agent any
+            steps {
+                sh 'docker run --name simple-java isky/simple-maven'
+            }
+        }
     }
 //    post {
 //        always {
